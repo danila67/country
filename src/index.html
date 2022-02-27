@@ -8,17 +8,46 @@
     <link rel="stylesheet" href="main.css">
 </head>
 <body>
-    <div class="main">
+    <div id="main">
         <div class="button_menu">
-            <button id="start">START</button>
-            <button id="about_developer">about developer</button>
+            <button id="button_new_game">New game</button>
+            <button id="button_about_developer">About developer</button>
+            <button id="button_continue_game">Continue game</button>
         </div>
     </div>
     <div id="start_menu_back">
         <div class="start_menu">
-            <input id="name_country" type="text">
+            <input id="name_country_input" type="text">
             <button id="button_create_country">craete counrty</button>
+            <button id="button_back_start">back</button>
         </div>
+    </div>
+    <div id="about_developer_menu_back">
+        <div class="about_developer_menu">
+            <p>Hello, my name is Danik. my social networks</p>
+            <div id="github">
+                <img src="./images/github.svg" width="20px" height="20px"/>
+                <a href="https://github.com/danila67">github</a>
+            </div>
+            <div id="inst">
+                <img src="./images/instagram.svg" width="20px" height="20px"/>
+                <a href="https://www.instagram.com/_sdadi_/">instagram</a>
+            </div>
+            <div id="vk">
+                <img src="./images/vk.svg" width="20px" height="20px"/>
+                <a href="https://vk.com/danilasherbak">vk</a>
+            </div>
+            <button id="button_back_about_developer">back</button>
+        </div>
+    </div>
+    <div id="cnv_div">
+        <button id="button_back_cnv_div">back</button>
+        <p id="position">x,y,index</p>
+        <p id="fps">fps</p>
+        <div class='name_country_div'>
+            <p id="name_country">//</p>
+        </div>
+        <canvas id="cnv" width="500px" height="500px"></canvas>
     </div>
     <script src="main.js" defer></script>
 </body>
