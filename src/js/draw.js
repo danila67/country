@@ -1,15 +1,16 @@
-import { canvas, ctx } from "./cnv";
+import { ctx } from "./cnv";
 import { Cell, map } from "./map/main";
 import { fun_dom } from "./menu/fun_dom";
 import { dom_id } from "./menu/get_dom_id";
+import { localStorageReturn } from './map/save'
 
 fun_dom.check()
 
-Cell.create()
-
-
-
 let fps;
+
+if(localStorage.getItem("player")) {
+  dom_id.continue_game.style.display = 'block'
+}
 
 function draw() {
     dom_id.fps.innerHTML = 'fps: ' +fps
@@ -17,7 +18,6 @@ function draw() {
     map.draw()
     map.check()
     map.position.check()
-    //console.log(fps)
 }
   
   const times = [];

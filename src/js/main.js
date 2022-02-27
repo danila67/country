@@ -1,1 +1,1 @@
-export let develop = false;
+export let game = false;

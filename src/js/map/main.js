@@ -44,6 +44,13 @@ export let map = {
             }
         }
     },
+    create() {
+        map.x = -1000;
+        map.y = -1000;
+        map.width[1] = map.width[0];
+        Cell.create()
+    }, 
+
     check() {
         canvas.onmousemove = function (e) {
             var x = e.pageX - e.target.offsetLeft,
