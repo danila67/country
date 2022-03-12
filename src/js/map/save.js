@@ -7,7 +7,7 @@ export function localStorageReturn() {
         name_country: name_country
 	}
 
-	for(let i = 0; i < map.width[0] * map.height[0]; i++) {
+	for(let i = 0; i < map.width[0] * map.height[0] + 1; i++) {
 		storage.map[i] = map.array[i];
 	}
     

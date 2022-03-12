@@ -1,10 +1,10 @@
+import { Lend } from "../map/generate_world";
 import { map } from "../map/main";
 import { localStorageReturn } from "../map/save";
 import { dom_id } from "./get_dom_id";
+import { loading } from "./loading";
 
-const raw = localStorage.getItem("player");
-const person = JSON.parse(raw);
-
+let size;
 export let name_country;
 export const fun_dom = {
     get_id: {
@@ -23,12 +23,16 @@ export const fun_dom = {
         dom_id.menu.style.display = 'none';
         dom_id.cnv.style.display = 'block';
 
+        const raw = localStorage.getItem("player");
+        const person = JSON.parse(raw);
+        
         if(localStorage.getItem("player")) {
           map.create()
           
-          for(let i = 0; i < map.width[0] * map.height[0]; i++) {
+          for(let i = 0; i < map.width[0] * map.height[0] + 1; i++) {
           	map.array[i].x = person.map[i].x;
           	map.array[i].y = person.map[i].y;
+            map.array[i].who = person.map[i].who;
           }
 
           name_country = person.name_country;
@@ -68,12 +72,32 @@ export const fun_dom = {
       });
 
       this.get_id.create.addEventListener('click', (event) => {
+        localStorage.clear();
+
+
         name_country = document.getElementById('name_country_input').value;
+        if (document.getElementById('size1').checked) {
+          size = document.getElementById('size1').value;
+        }
+        if (document.getElementById('size2').checked) {
+          size = document.getElementById('size2').value;
+        }
+        if (document.getElementById('size3').checked) {
+          size = document.getElementById('size3').value;
+        }
+
+
         dom_id.start_menu.style.display = 'none';
         dom_id.menu.style.display = 'none';
         dom_id.cnv.style.display = 'block';
         dom_id.name_country.innerHTML = name_country;
+
+
         map.create();
+        loading.quantity = 0
+        loading.game = false;
+        loading.width = 500 / size
+        Lend.createWord(size)
         localStorageReturn()
       });
     }

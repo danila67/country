@@ -1,23 +1,34 @@
 import { ctx } from "./cnv";
-import { Cell, map } from "./map/main";
+import { map } from "./map/main";
 import { fun_dom } from "./menu/fun_dom";
 import { dom_id } from "./menu/get_dom_id";
-import { localStorageReturn } from './map/save'
+import { lends } from "./map/generate_world";
+import { loading } from "./menu/loading";
 
 fun_dom.check()
 
 let fps;
 
-if(localStorage.getItem("player")) {
-  dom_id.continue_game.style.display = 'block'
-}
+
 
 function draw() {
+    if(localStorage.getItem("player")) {
+      dom_id.continue_game.style.display = 'block'
+    }
+    ctx.beginPath()
+    ctx.fillStyle = 'blue'
+    ctx.fillRect(0, 0, 500, 500);
     dom_id.fps.innerHTML = 'fps: ' +fps
-    ctx.clearRect(0, 0, 500, 500);
-    map.draw()
-    map.check()
-    map.position.check()
+  
+    if(loading.game) {
+      
+      map.draw()
+      map.check()
+      map.position.check()
+    } else {
+      lends.check()
+      loading.draw()
+    }
 }
   
   const times = [];
