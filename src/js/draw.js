@@ -9,7 +9,11 @@ fun_dom.check()
 
 let fps;
 
+function random(min, max) {
+  return min + Math.random() * (max - min);
+}
 
+alert( Math.floor(random(1, 10000)) );
 
 function draw() {
     if(localStorage.getItem("player")) {
